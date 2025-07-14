@@ -19,4 +19,27 @@ in render::
 web servies
 select backend
 -> Root Directory-backend
- 
+ build command
+ ->npm install
+
+ in package.json file 
+ ->add script "start": "node server.js"
+
+start command
+ ->npm start
+
+now copy the code from events 
+https://job-mela-website.onrender.com
+and then in frontend
+in utils->constant.js
+copy the code and paste in the .env file(CHeck ✅)
+in .env.production file(add the render link)(check ✅)
+
+
+in constant.js
+const BASE_URL =import.meta.env.VITE_BASE_API_URL;
+
+make all "" to ` `
+and add ${BASE_URL}
+
+
