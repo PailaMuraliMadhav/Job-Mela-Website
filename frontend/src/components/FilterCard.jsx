@@ -14,7 +14,7 @@ const fitlerData = [
     array: [
       "Frontend Developer",
       "Backend Developer",
-      "FullStack Developer",
+      "Full Stack Developer",
       "Data Scientist",
       "Data Analyst",
       "Software Devloper",
@@ -22,16 +22,16 @@ const fitlerData = [
       "UI/UX Designer"
     ],
   },
-  {
-    fitlerType: "Salary",
-    array: [
-      "0-40k",
-      "42k-1lakh",
-      "1lakh to 5lakh",
-      "6lakh-10lakh",
-      "10lakh-20lakh",
-    ],
-  },
+{
+  fitlerType: "Salary",
+  array: [
+    "1-5",
+    "6-10",
+    "10-15",
+    "15-40"
+  ],
+}
+,
 ];
 
 const FilterCard = () => {

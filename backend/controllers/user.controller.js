@@ -45,6 +45,8 @@ export const register = async (req, res) => {
       });
     }
 
+
+    
     const file = req.file; // This will contain the uploaded file
 
     // Check if file is provided

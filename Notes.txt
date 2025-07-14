@@ -1,0 +1,22 @@
+For Backend-
+Initilize npm
+npm Init -y 
+2)install express(for routing purposes, create server, run server, etc. )
+npm install express dotenv(dotenv is used to store sensitive data in .env files)
+3)install cors(cross origin resource sharing) 
+to share the data from one server to another server
+npm install cors
+4)install nodemon
+to run the server automatically after every change
+
+
+
+npm install nodemon -g
+5)in package.json file add script "start": "nodemon server.js"
+
+
+in render::
+web servies
+select backend
+-> Root Directory-backend
+ 

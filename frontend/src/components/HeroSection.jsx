@@ -50,17 +50,22 @@ const HeroSection = () => {
         </p>
 
         {/* Search input */}
-        <div className='flex w-[40%] shadow-lg border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto'>
-          <input
-            type="text"
-            placeholder='Find your dream jobs'
-            onChange={(e) => setQuery(e.target.value)}
-            className='outline-none border-none w-full'
-          />
-          <Button onClick={searchJobHandler} className="rounded-r-full bg-[#6A38C2]">
-            <Search className='h-5 w-5' />
-          </Button>
-        </div>
+<div className='flex w-[40%] shadow-lg border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto'>
+  <input
+    type="text"
+    placeholder="Find your dream jobs"
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") searchJobHandler();
+    }}
+    className="outline-none border-none w-full"
+  />
+  <Button onClick={searchJobHandler} className="rounded-r-full bg-[#6A38C2]">
+    <Search className="h-5 w-5" />
+  </Button>
+</div>
+
       </div>
     </div>
   )
