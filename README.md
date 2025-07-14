@@ -50,3 +50,44 @@
 
 ## 📦 Folder Structure
 
+Job-Mela-Website/
+├── backend/
+│ ├── models/
+│ ├── controllers/
+│ ├── routes/
+│ ├── utils/
+│ └── index.js
+├── frontend/
+│ ├── components/
+│ ├── pages/
+│ ├── redux/
+│ ├── hooks/
+│ └── main.jsx
+
+
+🌍 Deployment
+🔹 Frontend – Vercel
+Deploy from GitHub repo
+
+Set VITE_BACKEND_URL in Vercel's Environment Variables
+
+🔸 Backend – Render
+Create a Web Service
+
+Add .env variables in the Render dashboard
+
+Set Start Command: node index.js
+
+Ensure MongoDB IP whitelist includes 0.0.0.0/0
+
+
+📣 Contributing
+Contributions are welcome! Open a pull request or submit an issue.
+
+👤 Author
+Murali Madhav Paila
+GitHub: @PailaMuraliMadhav
+
+📄 License
+This project is licensed under the MIT License. See LICENSE for details.
+
