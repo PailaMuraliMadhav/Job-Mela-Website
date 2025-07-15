@@ -18,8 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // ✅ CORS Setup
-const whitelist = [process.env.FRONTEND_URL, "http://localhost:5173"];
 
+
+const whitelist = [process.env.FRONTEND_URL, "http://localhost:5173"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.includes(origin)) {
@@ -28,8 +29,11 @@ const corsOptions = {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true,
+  credentials: true, // ✅ Important for cookies
 };
+
+app.use(cors(corsOptions)); // ✅ only once!
+
 
 // Routes
 app.use("/api/v1/user", userRoute);
