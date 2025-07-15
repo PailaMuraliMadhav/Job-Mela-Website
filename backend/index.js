@@ -11,14 +11,16 @@ import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 
 const app = express();
+
+// ✅ Middleware for JSON parsing, cookies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// ✅ Use correct whitelist (Add both deployed + local frontend URLs)
+// ✅ Whitelist both local + production frontend URLs
 const whitelist = [
-  "https://jobmela.vercel.app",      // ✅ Production frontend
-  "http://localhost:5173"            // ✅ Local frontend
+  "https://jobmela.vercel.app",
+  "http://localhost:5173",
 ];
 console.log("CORS Whitelist:", whitelist);
 
@@ -31,12 +33,18 @@ const corsOptions = {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true,
+  credentials: true, // ✅ allow cookies to be sent
 };
 
-
-// ✅ Use cors middleware
+// ✅ Enable CORS
 app.use(cors(corsOptions));
+
+// ✅ Optional: Debug incoming cookies and origin
+app.use((req, res, next) => {
+  console.log("Request Origin:", req.headers.origin);
+  console.log("Cookies:", req.cookies);
+  next();
+});
 
 // ✅ Routes
 app.use("/api/v1/user", userRoute);
