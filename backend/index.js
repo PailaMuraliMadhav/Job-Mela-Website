@@ -19,11 +19,9 @@ app.use(cookieParser());
 
 // ✅ CORS Setup
 const whitelist = [process.env.FRONTEND_URL, "http://localhost:5173"];
-console.log("Whitelist:", whitelist);
 
 const corsOptions = {
   origin: function (origin, callback) {
-    console.log("Incoming origin:", origin);
     if (!origin || whitelist.includes(origin)) {
       callback(null, true);
     } else {
@@ -32,8 +30,6 @@ const corsOptions = {
   },
   credentials: true,
 };
-
-app.use(cors(corsOptions)); // ✅ only once!
 
 // Routes
 app.use("/api/v1/user", userRoute);
