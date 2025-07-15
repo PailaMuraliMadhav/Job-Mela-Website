@@ -19,10 +19,10 @@ app.use(cookieParser());
 
 // ✅ Whitelist both local + production frontend URLs
 const whitelist = [
-  "https://jobmela.vercel.app",
   "http://localhost:5173",
+  "https://jobmela.vercel.app", // ✅ your custom domain (if used)
+  "https://job-mela-website-murali-pailas-projects.vercel.app" // ✅ vercel preview domain
 ];
-console.log("CORS Whitelist:", whitelist);
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -33,11 +33,11 @@ const corsOptions = {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true, // ✅ allow cookies to be sent
+  credentials: true
 };
 
-// ✅ Enable CORS
 app.use(cors(corsOptions));
+
 
 // ✅ Optional: Debug incoming cookies and origin
 app.use((req, res, next) => {
