@@ -20,8 +20,8 @@ app.use(cookieParser());
 // ✅ Whitelist both local + production frontend URLs
 const whitelist = [
   "http://localhost:5173",
-  "https://jobmela.vercel.app", // ✅ your custom domain (if used)
-  "https://job-mela-website-murali-pailas-projects.vercel.app" // ✅ vercel preview domain
+  "https://job-mela.vercel.app", // ✅ your custom domain (if used)
+ // ✅ vercel preview domain
 ];
 
 const corsOptions = {
