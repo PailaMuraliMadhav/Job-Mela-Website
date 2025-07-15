@@ -11,28 +11,32 @@ import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 
 const app = express();
-
-// ✅ Middleware for parsing JSON, URL-encoded, and cookies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser()); // ✅ Required for cookies to work
+app.use(cookieParser());
 
-// ✅ CORS config
-const whitelist = [process.env.FRONTEND_URL, "http://localhost:5173"];
-console.log("Whitelist:", whitelist);
+// ✅ Use correct whitelist (Add both deployed + local frontend URLs)
+const whitelist = [
+  "https://jobmela.vercel.app",      // ✅ Production frontend
+  "http://localhost:5173"            // ✅ Local frontend
+];
+console.log("CORS Whitelist:", whitelist);
 
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log("Incoming Origin:", origin);
     if (!origin || whitelist.includes(origin)) {
       callback(null, true);
     } else {
+      console.log("❌ Blocked by CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true, // ✅ allow cookies to be sent from frontend
+  credentials: true
 };
 
-app.use(cors(corsOptions)); // ✅ Put this BEFORE routes
+// ✅ Use cors middleware
+app.use(cors(corsOptions));
 
 // ✅ Routes
 app.use("/api/v1/user", userRoute);
@@ -40,13 +44,8 @@ app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
-// ✅ Health check
-app.get("/", (req, res) => {
-  res.send("API is working ✅");
-});
-
 // ✅ Start server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   connectDB();
   console.log(`🚀 Server running at port ${PORT}`);
